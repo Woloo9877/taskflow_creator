@@ -8,6 +8,7 @@ import '../../data/services/firebase_auth_service.dart';
 import '../../data/services/firestore_service.dart';
 import '../widgets/custom_progress_ring.dart';
 import '../widgets/task_card.dart';
+import 'profile_screen.dart';
 import 'task_detail_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -46,9 +47,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             tooltip: 'Toggle theme',
           ),
           IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () => _authService.signOut(),
-            tooltip: 'Sign out',
+            icon: const Icon(Icons.person_outline),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const ProfileScreen()),
+            ),
+            tooltip: 'Account',
           ),
         ],
       ),
