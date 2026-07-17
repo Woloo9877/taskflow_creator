@@ -23,6 +23,7 @@ A Flutter to-do list application built for content creators and digital builders
 - **No UI kit or template** - theme, components, and layouts built from scratch
 
 ## Architecture
+```text
 lib/
 ├── core/
 │   ├── constants/     # AppColors, AppTextStyles - single source of truth for styling
@@ -39,6 +40,7 @@ lib/
 │   └── widgets/       # CustomProgressRing, TaskCard
 │
 └── main.dart          # Firebase init, theme wiring, auth-state routing
+```
 
 Dependency direction is one-way: `presentation` depends on `data`, `data` depends on `core`, never the reverse. UI widgets never call the Firebase SDK directly - they go through `FirebaseAuthService` / `FirestoreService`.
 
