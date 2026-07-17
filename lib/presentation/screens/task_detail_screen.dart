@@ -4,7 +4,6 @@ import '../../core/utils/date_time_formatters.dart';
 import '../../core/utils/input_validators.dart';
 import '../../data/models/task_model.dart';
 import '../../data/services/firestore_service.dart';
-import '../widgets/pomodoro_timer_view.dart';
 
 class TaskDetailScreen extends StatefulWidget {
   final TaskModel task;
@@ -109,9 +108,9 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: DraggableScrollableSheet(
-        initialChildSize: 0.85,
-        minChildSize: 0.5,
-        maxChildSize: 0.95,
+        initialChildSize: 0.7,
+        minChildSize: 0.4,
+        maxChildSize: 0.9,
         expand: false,
         builder: (context, scrollController) {
           return SingleChildScrollView(
@@ -178,17 +177,6 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                       onPressed: () => setState(() => _dueDate = null),
                       child: const Text('Clear due date'),
                     ),
-                  const SizedBox(height: 24),
-                  Divider(color: theme.dividerColor),
-                  const SizedBox(height: 16),
-                  PomodoroTimerView(
-                    onFocusComplete: () {
-                      if (widget.task.id != null) {
-                        widget.firestoreService
-                            .incrementPomodoroCount(widget.task.id!);
-                      }
-                    },
-                  ),
                   const SizedBox(height: 24),
                   Row(
                     children: [
